@@ -1,5 +1,5 @@
 // heap.cpp
-// Diba Mirza
+// Sanjana Shankar
 
 #include "heap.h"
 #include <iostream>
@@ -8,24 +8,7 @@ using std::cout;
 // Pushes a value into the heap, then ensures
 // the heap is correctly arranged
 void Heap::push(int value){
-  /*
-  vdata.resize(vdata.size()+1);
-  int index = 0;
-  for(int i = 0; i < vdata.size(); i++) {
-    if(value <= vdata.at(i)) {
-      index = i;
-      break;
-    }
-  }
-
-  for(int i = vdata.size()-1; i >= index; i--) {
-    if(i == index) {
-      vdata.at(i) = value;
-      break;
-    }
-    vdata.at(i) = vdata.at(i-1);
-  }
-  */
+  
   vdata.push_back(value);
   int temp = 0;
   for(int i = vdata.size()-1; i>0; i--) {
@@ -44,22 +27,11 @@ void Heap::push(int value){
 // (but does not return it), then ensures
 // the heap is correctly arranged
 void Heap::pop(){
-  /*
-  int lastElement = vdata.at(vdata.size()-1);
-  vdata.resize(vdata.size()-1);
-  for(int i = 0; i<vdata.size(); i++) {
-    if(i == vdata.size()-1) {
-      vdata.at(i) = lastElement;
-      break;
-    }
-    vdata.at(i) = vdata.at(i+1);
-
-  }
-  */
+  
   for(int i = 0; i<vdata.size()-1; i++) {
     vdata.at(i) = vdata.at(i+1);
   }
-  vdata.resize(vdata.size()-1);
+  vdata.pop_back();
 
 }
 
