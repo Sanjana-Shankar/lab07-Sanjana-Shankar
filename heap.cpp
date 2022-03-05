@@ -8,6 +8,22 @@ using std::cout;
 // Pushes a value into the heap, then ensures
 // the heap is correctly arranged
 void Heap::push(int value){
+  vdata.resize(vdata.size()+1);
+  int index = 0;
+  for(int i = 0; i < vdata.size(); i++) {
+    if(value <= vdata.at(i)) {
+      index = i;
+      break;
+    }
+  }
+
+  for(int i = vdata.size()-1; i >= index; i--) {
+    if(i == index) {
+      vdata.at(i) = value;
+      break;
+    }
+    vdata.at(i) = vdata.at(i-1);
+  }
 
 }
 
@@ -15,16 +31,30 @@ void Heap::push(int value){
 // (but does not return it), then ensures
 // the heap is correctly arranged
 void Heap::pop(){
+  int lastElement = vdata.at(vdata.size()-1);
+  vdata.resize(vdata.size()-1);
+  for(int i = 0; i<vdata.size(); i++) {
+    if(i == vdata.size()-1) {
+      vdata.at(i) = lastElement;
+      break;
+    }
+    vdata.at(i) = vdata.at(i+1);
 
+  }
 }
 
 // Returns the minimum element in the heap
 int Heap::top(){
-  return 0;
+  return vdata.at(0);
 }
 
 // Returns true if the heap is empty, false otherwise
 bool Heap::empty(){
-  return true;
+  if(vdata.size() == 0) {
+    return true;
+  }else {
+    return false;
+  }
+
 }
     
